@@ -179,7 +179,7 @@
                 }
 
             </script>
-
+            <input type="file" id="fileInput" accept="application/pdf" class="d-none">
             <hr>
             <button type="submit" class="btn btn-primary w-100 fs-5 fw-bold"><i class="fa-solid fa-file-arrow-up"></i> บันทึก</button>
         </form>
@@ -208,7 +208,7 @@
                     <button id="customFileButton" class="btn btn-primary fs-4 px-5 shadow">
                         เลือกไฟล์ PDF
                     </button>
-                    <input type="file" id="fileInput" accept="application/pdf" class="d-none">
+                    
                 </div>
 
                 <!-- พื้นที่ที่จะแสดงไฟล์ PDF ทุกหน้า -->
@@ -233,7 +233,6 @@
             <button id="sidebarFileButton" class="btn btn-primary w-100 mb-3 fs-5">
                 <i class="fa-solid fa-circle-plus"></i> เลือกไฟล์ PDF ใหม่
             </button>
-            <input type="file" id="fileInput" accept="application/pdf" class="d-none">
         </div>
     </div>
 </div>
