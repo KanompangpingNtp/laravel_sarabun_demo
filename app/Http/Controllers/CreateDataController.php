@@ -7,15 +7,9 @@ use App\Models\ReceivedBook;
 use App\Models\DocumentPdf;
 use App\Models\ReceivedBookView;
 
-class GetBookController extends Controller
+class CreateDataController extends Controller
 {
-    public function getbookIndex()
-    {
-        $lastReceivedBookId = ReceivedBook::max('id') + 1;
-
-        return view('pages.index', compact('lastReceivedBookId'));
-    }
-
+    //
     public function getbookCreate(Request $request)
     {
         $request->validate([
