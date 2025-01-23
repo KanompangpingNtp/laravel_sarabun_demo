@@ -124,8 +124,8 @@
                 data-bs-toggle="dropdown" aria-expanded="false">
                 <!-- ชื่อและตำแหน่งงาน -->
                 <div class="text-end lh-1">
-                    <span class="d-block fs-4 fw-bold" style="color: #5a9bd5;">กระเพรา</span>
-                    <small class="fs-5" style="color: #808080;">นักพัฒนาเว็บไซต์</small>
+                    <span class="d-block fs-4 fw-bold" style="color: #5a9bd5;">{{ Auth::user()->full_name }}</span>
+                    <small class="fs-5" style="color: #808080;">{{ Auth::user()->agency->agency_name }}</small>
                 </div>
                 <!-- รูปโปรไฟล์ -->
                 <img src="{{ asset('images/1006-200x200.jpg') }}" alt="User Avatar"
@@ -139,7 +139,13 @@
                 <li>
                     <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+                {{-- <li><a class="dropdown-item text-danger" href="#">Logout</a></li> --}}
+                <li>
+                    <form action="{{ route('logout') }}" method="POST" id="logout-form">
+                        @csrf
+                        <button type="submit" class="dropdown-item text-danger">Logout</button>
+                    </form>
+                </li>
             </ul>
         </div>
 
@@ -229,7 +235,7 @@
     </div>
 
 
-    
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
