@@ -209,8 +209,7 @@
 
             <!-- Other Tabs -->
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <h3>แฟ้มบนโต๊ะ</h3>
-                <p>This is the content for the Profile tab.</p>
+                @yield('home2')
             </div>
 
             <div class="tab-pane fade" id="tracking" role="tabpanel" aria-labelledby="tracking-tab">
