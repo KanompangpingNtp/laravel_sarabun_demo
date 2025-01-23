@@ -12,6 +12,6 @@ class BookFilesController extends Controller
     {
         $ReceivedBook = ReceivedBook::with('documentPdf')->get();
 
-        return view('pages.book_file', compact('ReceivedBook'));
+        return view('pages.home2', compact('ReceivedBook'));
     }
 }
