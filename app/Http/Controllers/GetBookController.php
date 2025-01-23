@@ -13,7 +13,7 @@ class GetBookController extends Controller
     {
         $lastReceivedBookId = ReceivedBook::max('id') + 1;
 
-        return view('pages.home', compact('lastReceivedBookId'));
+        return view('pages.index', compact('lastReceivedBookId'));
     }
 
     public function getbookCreate(Request $request)
