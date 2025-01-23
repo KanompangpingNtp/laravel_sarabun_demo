@@ -3,7 +3,6 @@
 @section('home1')
 
 <div class="row">
-    <!-- คอลัมน์ซ้ายสำหรับการกรอกข้อมูล -->
     <div class="col-md-4 mt-4 p-3 rounded lh-1" style="background-color: #f1f1f1; overflow:auto; max-height: 83vh;">
         <div class="fs-3 fw-bold">ข้อมูลหนนังสือ</div>
         <form action="{{ route('getbookCreate') }}" method="POST" enctype="multipart/form-data">
@@ -11,36 +10,38 @@
             <div class="mb-1 row">
                 <label for="register_type" class="col-sm-2 col-form-label text-end">สมุดทะเบียน</label>
                 <div class="col-sm-5 position-relative">
-                    <select class="form-control" id="register_type" name="register_type">
+                    <select class="form-select" id="register_type" name="register_type" required>
                         <option value="" disabled selected hidden>เลือกสมุดทะเบียน</option>
-                        <option value="1">ทั่วไป</option>
-                        <option value="2">ทั่วไป 2568</option>
+                        <option value="option1">ทั่วไป</option>
+                        <option value="option2">ทั่วไป 2568</option>
                     </select>
                     <span class="text-danger position-absolute fw-bold" style="top: 10%; right: 5px; transform: translateY(-50%);">*</span>
                 </div>
                 <label for="number_receive" class="col-sm-2 col-form-label text-end">เลขที่รับ</label>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control" id="number_receive" name="number_receive" value="{{ $numberReceive }}" placeholder="เลขที่รับ" readonly>
+                    <input type="text" class="form-control" id="number_receive" name="number_receive" value="{{ $lastReceivedBookId }}" placeholder="เลขที่รับ" readonly>
                 </div>
             </div>
+
             <hr>
+
             <div class="mb-1 row">
                 <label for="book_number" class="col-sm-2 col-form-label text-end">เลขที่หนังสือ</label>
                 <div class="col-sm-3 position-relative">
-                    <input type="text" class="form-control" id="book_number" name="book_number">
+                    <input type="text" class="form-control" id="book_number" name="book_number" required>
                     <span class="text-danger position-absolute fw-bold" style="top: 10%; right: 5px; transform: translateY(-50%);">*</span>
                 </div>
                 <div class="col-sm-1  fs-1 p-0 text-center">/</div>
                 <div class="col-sm-3">
-                    <select class="form-control" id="book_year" name="book_year">
+                    <select class="form-select" id="book_year" name="book_year">
                         <option value="" disabled selected hidden></option>
-                        <option value="1">ว</option>
-                        <option value="2">ว 2566</option>
-                        <option value="3">2567</option>
+                        <option value="option1">ว</option>
+                        <option value="option2">ว 2566</option>
+                        <option value="option3">2567</option>
                     </select>
                 </div>
                 <div class="col-sm-3 position-relative">
-                    <input type="text" class="form-control" id="book_receipt_number" name="book_receipt_number">
+                    <input type="text" class="form-control" id="book_receipt_number" name="book_receipt_number" required>
                     <span class="text-danger position-absolute fw-bold" style="top: 10%; right: 5px; transform: translateY(-50%);">*</span>
                 </div>
             </div>
@@ -48,7 +49,7 @@
             <div class="mb-1 row">
                 <label for="urgency_level" class="col-sm-2 col-form-label text-end">ชั้นความเร็ว</label>
                 <div class="col-sm-10">
-                    <select class="form-control" id="urgency_level" name="urgency_level">
+                    <select class="form-select" id="urgency_level" name="urgency_level">
                         <option value="" disabled selected hidden>เลือกชั้นความเร็ว</option>
                         <option value="1">ด่วน</option>
                         <option value="2">ด่วนมาก</option>
@@ -80,14 +81,14 @@
             <div class="mb-2 row">
                 <label for="subject" class="col-sm-2 col-form-label text-end">เรื่อง</label>
                 <div class="col-sm-10 position-relative">
-                    <textarea class="form-control" id="subject" name="subject"></textarea>
+                    <textarea class="form-control" id="subject" name="subject" required></textarea>
                     <span class="text-danger position-absolute fw-bold" style="top: 10%; right: 5px; transform: translateY(-50%);">*</span>
                 </div>
             </div>
             <div class="mb-1 row">
                 <label for="to_person" class="col-sm-2 col-form-label text-end">เรียน</label>
                 <div class="col-sm-10 position-relative">
-                    <input type="text" class="form-control" id="to_person" name="to_person">
+                    <input type="text" class="form-control" id="to_person" name="to_person" required>
                     <span class="text-danger position-absolute fw-bold" style="top: 10%; right: 5px; transform: translateY(-50%);">*</span>
                 </div>
             </div>
@@ -100,7 +101,7 @@
             <div class="mb-2 row">
                 <label for="content" class="col-sm-2 col-form-label text-end">เนื้อหา</label>
                 <div class="col-sm-10 position-relative">
-                    <textarea class="form-control" id="content" name="content"></textarea>
+                    <textarea class="form-control" id="content" name="content" required></textarea>
                     <span class="text-danger position-absolute fw-bold" style="top: 10%; right: 5px; transform: translateY(-50%);">*</span>
                 </div>
             </div>
@@ -127,12 +128,12 @@
                     <span class="text-danger position-absolute fw-bold" style="top: 10%; right: 5px; transform: translateY(-50%);">*</span>
                 </div>
 
-                <!-- Button trigger modal -->
                 <div class="col-sm-2">
                     <button type="button" class="btn btn-outline-dark pt-2" data-bs-toggle="modal" data-bs-target="#staticBackdropx">
                         <i class="fa-solid fa-address-book"></i>
                     </button>
                 </div>
+
                 <!-- Modal -->
                 <div class="modal fade" id="staticBackdropx" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -169,17 +170,16 @@
                     const checkbox = document.getElementById("enableDate");
                     const dateInput = document.getElementById("dateInput");
 
-                    // ถ้า checkbox ถูกเลือก
                     if (checkbox.checked) {
-                        dateInput.disabled = false; // เปิดให้กรอกวันที่
+                        dateInput.disabled = false;
                     } else {
-                        dateInput.disabled = true; // ปิดไม่ให้กรอกวันที่
-                        dateInput.value = ''; // ล้างค่าในช่องกรอกวันที่
+                        dateInput.disabled = true;
+                        dateInput.value = '';
                     }
                 }
 
             </script>
-            <input type="file" id="fileInput" accept="application/pdf" class="d-none">
+            <input type="file" id="fileInput" accept="application/pdf" class="d-none" name="file_input" required>
             <hr>
             <button type="submit" class="btn btn-primary w-100 fs-5 fw-bold"><i class="fa-solid fa-file-arrow-up"></i> บันทึก</button>
         </form>
@@ -208,7 +208,7 @@
                     <button id="customFileButton" class="btn btn-primary fs-4 px-5 shadow">
                         เลือกไฟล์ PDF
                     </button>
-                    
+
                 </div>
 
                 <!-- พื้นที่ที่จะแสดงไฟล์ PDF ทุกหน้า -->

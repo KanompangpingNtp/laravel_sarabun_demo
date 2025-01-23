@@ -10,6 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         @font-face {
             font-family: 'th-krub';
@@ -111,6 +112,16 @@
 </head>
 
 <body>
+    @if ($message = Session::get('success'))
+    <script>
+        Swal.fire({
+            icon: 'success'
+            , title: '{{ $message }}'
+        , })
+
+    </script>
+    @endif
+
     <nav class="navbar navbar-expand-lg navbar-light bg-white px-4 border-bottom">
         <!-- Logo -->
         <a class="navbar-brand text-uppercase fs-1" href="#"><span style="color: #5a9bd5">Sarabun</span> Demo</a>
@@ -134,8 +145,8 @@
 
             <!-- เมนู Dropdown -->
             <ul class="dropdown-menu dropdown-menu-end bg-light text-dark fs-5" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">ข้อมูลผู้ใช้</a></li>
+                <li><a class="dropdown-item" href="#">ตั้งค่าระบบ</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>
@@ -143,7 +154,7 @@
                 <li>
                     <form action="{{ route('logout') }}" method="POST" id="logout-form">
                         @csrf
-                        <button type="submit" class="dropdown-item text-danger">Logout</button>
+                        <button type="submit" class="dropdown-item text-danger">ออกจากระบบ</button>
                     </form>
                 </li>
             </ul>

@@ -3,25 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ReceivedBook;
+use App\Models\DocumentPdf;
+use App\Models\ReceivedBookView;
 
 class GetBookController extends Controller
 {
     public function getbookIndex()
     {
-        if (!session()->has('submit_count')) {
-            session(['submit_count' => 1]); // เริ่มจาก 1
-        }
+        $lastReceivedBookId = ReceivedBook::max('id') + 1;
 
-        if (request()->isMethod('post')) {
-            // เพิ่มค่าเฉพาะเมื่อเป็น POST
-            $submitCount = session('submit_count') + 1;
-            session(['submit_count' => $submitCount]); // อัปเดตค่า submit_count
-        }
-
-        $numberReceive = session('submit_count');
-
-
-        return view('pages.home', compact('numberReceive'));
+        return view('pages.home', compact('lastReceivedBookId'));
     }
 
     public function getbookCreate(Request $request)
@@ -42,9 +34,45 @@ class GetBookController extends Controller
             'content' => 'nullable|string',
             'note' => 'nullable|string',
             'from_person' => 'nullable|string',
+            'file_input' => 'file|max:10240',
         ]);
 
-        dd($request);
+        // dd($request);
+
+        $ReceivedBook = ReceivedBook::create([
+            'users_id' => auth()->id(),
+            'register_type' => $request->register_type,
+            'number_receive' => $request->number_receive,
+            'book_number' => $request->book_number,
+            'book_year' => $request->book_year,
+            'book_receipt_number' => $request->book_receipt_number,
+            'urgency_level' => $request->urgency_level,
+            'received_date' => $request->received_date,
+            'date_receipt' => $request->date_receipt,
+            'registered_date' => $request->registered_date,
+            'subject' => $request->subject,
+            'to_person' => $request->to_person,
+            'reference' => $request->reference,
+            'content' => $request->content,
+            'note' => $request->note,
+            'from_person' => $request->from_person,
+        ]);
+
+        if ($request->hasFile('file_input')) {
+            $file = $request->file('file_input');
+            if ($file->getClientOriginalExtension() !== 'pdf') {
+                return redirect()->back()->with('error', 'รองรับเฉพาะไฟล์ PDF เท่านั้น!');
+            }
+
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $path = $file->storeAs('pdf', $filename, 'public');
+
+            DocumentPdf::create([
+                'received_book_id' => $ReceivedBook->id,
+                'pdf_files' => $path,
+                'pdf_status' => 1,
+            ]);
+        }
 
         return redirect()->back()->with('success', 'หนังสือถูกส่งเรียบร้อย');
     }

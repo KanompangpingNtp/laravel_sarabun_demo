@@ -10,9 +10,9 @@ class ReceivedBook extends Model
     use HasFactory;
 
     protected $fillable = [
-        'users_id', 'register_type', 'book_number', 'book_year', 'book_receipt_number',
+        'users_id', 'register_type','number_receive', 'book_number', 'book_year', 'book_receipt_number',
         'urgency_level', 'received_date', 'date_receipt', 'registered_date', 'subject',
-        'to_person', 'reference', 'content', 'note', 'from_person', 'status',
+        'to_person', 'reference', 'content', 'note', 'from_person',
     ];
 
     public function user()
