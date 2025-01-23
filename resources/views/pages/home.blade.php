@@ -1,6 +1,4 @@
-@extends('layouts.app')
-@section('title','Sarabun-Demo-GM-SKY')
-@section('home1')
+
 <div class="row">
     <!-- คอลัมน์ซ้ายสำหรับการกรอกข้อมูล -->
     <div class="col-md-4 mt-4 p-3 rounded lh-1"
@@ -356,4 +354,3 @@
         }
     });
 </script>
-@endsection

@@ -187,13 +187,12 @@
         <div class="tab-content px-4" id="myTabContent">
             <!-- Home Tab -->
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                @yield('home1')
+                @include('pages.home')
             </div>
 
             <!-- Other Tabs -->
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <h3>แฟ้มบนโต๊ะ</h3>
-                <p>This is the content for the Profile tab.</p>
+                @include('pages.home2')
             </div>
 
             <div class="tab-pane fade" id="tracking" role="tabpanel" aria-labelledby="tracking-tab">
