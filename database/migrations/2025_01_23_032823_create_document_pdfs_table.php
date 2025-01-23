@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('document_pdfs', function (Blueprint $table) {
             $table->id();
-            $table->string('full_name');
-            $table->string('nickname');
-            $table->string('phone');
-            $table->string('name_account');
-            $table->string('password');
+            $table->foreignId('received_book_id')->constrained('received_books')->onDelete('cascade');
+            $table->string('pdf_files');
+            $table->string('pdf_status');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('document_pdfs');
     }
 };
