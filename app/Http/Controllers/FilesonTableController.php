@@ -7,14 +7,13 @@ use App\Models\ReceivedBook;
 use App\Models\DocumentPdf;
 use App\Models\ReceivedBookView;
 
-class GetShowDataController extends Controller
+class FilesonTableController extends Controller
 {
+    //
     public function getbookIndex()
     {
-        $lastReceivedBookId = ReceivedBook::max('id') + 1;
-
         $ReceivedBook = ReceivedBook::with('documentPdf')->get();
 
-        return view('pages.index', compact('lastReceivedBookId','ReceivedBook'));
+        return view('pages.home2', compact('ReceivedBook'));
     }
 }

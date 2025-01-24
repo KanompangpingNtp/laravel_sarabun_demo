@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('home')
 
 <div class="row">
     <div class="col-md-4 mt-4 p-3 rounded lh-1" style="background-color: #f1f1f1; overflow:auto; max-height: 83vh;">
@@ -323,3 +325,5 @@
         }
     });
 </script>
+
+@endsection

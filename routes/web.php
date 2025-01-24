@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\GetShowDataController;
-use App\Http\Controllers\CreateDataController;
+use App\Http\Controllers\GetBookController;
+use App\Http\Controllers\FilesonTableController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,11 +26,11 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['checkAgencie1'])->group(function () {
     //รับหนังสือ
-    Route::get('/sarabun', [GetShowDataController::class, 'getbookIndex'])->name('getbookIndex');
-    Route::post('/getbook/create', [CreateDataController::class, 'getbookCreate'])->name('getbookCreate');
+    Route::get('/sarabun', [GetBookController::class, 'getbookIndex'])->name('getbookIndex');
+    Route::post('/getbook/create', [GetBookController::class, 'getbookCreate'])->name('getbookCreate');
 
     //แฟ้มบนโต๊ะ
-    Route::get('/BookFiles/index', [GetShowDataController::class, 'BookFiles'])->name('BookFiles');
+    Route::get('/BookFiles/index', [FilesonTableController::class, 'BookFiles'])->name('BookFiles');
 });
 
 Route::middleware(['checkAgencie2'])->group(function () {

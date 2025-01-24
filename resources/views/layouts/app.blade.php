@@ -204,7 +204,8 @@
         <div class="tab-content px-4" id="myTabContent">
             <!-- Home Tab -->
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                @include('pages.home')
+                {{-- @include('pages.home') --}}
+                @yield('home')
             </div>
 
             <!-- Other Tabs -->
