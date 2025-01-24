@@ -2,7 +2,7 @@
 @section('home')
 
 <div class="row">
-    <div class="col-md-4 mt-4 p-3 rounded lh-1" style="background-color: #f1f1f1; overflow:auto; max-height: 83vh;">
+    <div class="col-md-5 mt-4 p-3 rounded lh-1" style="background-color: #f1f1f1; overflow:auto; max-height: 83vh;">
         <div class="fs-3 fw-bold">ข้อมูลหนนังสือ</div>
         <form action="{{ route('getbookCreate') }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -186,7 +186,7 @@
     </div>
 
     <!-- คอลัมน์ขวาสำหรับการแสดง Tab Menu -->
-    <div class="col-md-6">
+    <div class="col-md-5">
         <ul class="nav nav-tabs" id="myTab2" role="tablist" style="justify-content: flex-end;">
             <li class="nav-item" role="presentation">
                 <a class="nav-link active" id="home-tab2" data-bs-toggle="tab" href="#home2" role="tab" aria-controls="home2" aria-selected="true">หนังสือรับ</a>
