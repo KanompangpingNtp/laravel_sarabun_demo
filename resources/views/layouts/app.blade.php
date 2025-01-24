@@ -108,6 +108,7 @@
         ::-webkit-scrollbar-vertical {
             width: 6px;
         }
+
     </style>
 </head>
 
@@ -131,16 +132,14 @@
 
         <!-- User Account Dropdown -->
         <div class="dropdown">
-            <button class="btn btn-light dropdown-toggle d-flex align-items-center" id="dropdownMenuButton"
-                data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-light dropdown-toggle d-flex align-items-center" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                 <!-- ชื่อและตำแหน่งงาน -->
                 <div class="text-end lh-1">
                     <span class="d-block fs-4 fw-bold" style="color: #5a9bd5;">{{ Auth::user()->full_name }}</span>
                     <small class="fs-5" style="color: #808080;">{{ Auth::user()->agency->agency_name }}</small>
                 </div>
                 <!-- รูปโปรไฟล์ -->
-                <img src="{{ asset('images/1006-200x200.jpg') }}" alt="User Avatar"
-                    class="rounded-circle mx-2 border border-gray" style="width: 50px; height: 50px;" />
+                <img src="{{ asset('images/1006-200x200.jpg') }}" alt="User Avatar" class="rounded-circle mx-2 border border-gray" style="width: 50px; height: 50px;" />
             </button>
 
             <!-- เมนู Dropdown -->
@@ -167,36 +166,31 @@
         <!-- Tab Navigation -->
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab"
-                    aria-controls="home" aria-selected="true">รับหนังสือ</a>
+                {{-- <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">รับหนังสือ</a> --}}
+                <a class="nav-link" id="home-tab" href="{{ route('getbookIndex') }}" role="tab" aria-controls="home" aria-selected="false">แฟ้มบนโต๊ะ</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab"
-                    aria-controls="profile" aria-selected="false">แฟ้มบนโต๊ะ</a>
+                {{-- <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab"
+                    aria-controls="profile" aria-selected="false">แฟ้มบนโต๊ะ</a> --}}
+                <a class="nav-link" id="profile-tab" href="{{ route('BookFiles') }}" role="tab" aria-controls="profile" aria-selected="false">แฟ้มบนโต๊ะ</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="tracking-tab" data-bs-toggle="tab" href="#tracking" role="tab"
-                    aria-controls="tracking" aria-selected="false">ติดตามหนังสือ</a>
+                <a class="nav-link" id="tracking-tab" data-bs-toggle="tab" href="#tracking" role="tab" aria-controls="tracking" aria-selected="false">ติดตามหนังสือ</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="create-tab" data-bs-toggle="tab" href="#create" role="tab"
-                    aria-controls="create" aria-selected="false">สร้างหนังสือ</a>
+                <a class="nav-link" id="create-tab" data-bs-toggle="tab" href="#create" role="tab" aria-controls="create" aria-selected="false">สร้างหนังสือ</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="send-tab" data-bs-toggle="tab" href="#send" role="tab"
-                    aria-controls="send" aria-selected="false">ส่งหนังสือ</a>
+                <a class="nav-link" id="send-tab" data-bs-toggle="tab" href="#send" role="tab" aria-controls="send" aria-selected="false">ส่งหนังสือ</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="file-tab" data-bs-toggle="tab" href="#file" role="tab"
-                    aria-controls="file" aria-selected="false">แฟ้มในตู้</a>
+                <a class="nav-link" id="file-tab" data-bs-toggle="tab" href="#file" role="tab" aria-controls="file" aria-selected="false">แฟ้มในตู้</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="result-tab" data-bs-toggle="tab" href="#result" role="tab"
-                    aria-controls="result" aria-selected="false">ผลการดำเนินงาน</a>
+                <a class="nav-link" id="result-tab" data-bs-toggle="tab" href="#result" role="tab" aria-controls="result" aria-selected="false">ผลการดำเนินงาน</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="booking-tab" data-bs-toggle="tab" href="#booking" role="tab"
-                    aria-controls="booking" aria-selected="false">จองเลข</a>
+                <a class="nav-link" id="booking-tab" data-bs-toggle="tab" href="#booking" role="tab" aria-controls="booking" aria-selected="false">จองเลข</a>
             </li>
         </ul>
 
@@ -210,7 +204,7 @@
 
             <!-- Other Tabs -->
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                @include('pages.home2')
+                @yield('home2')
             </div>
 
             <div class="tab-pane fade" id="tracking" role="tabpanel" aria-labelledby="tracking-tab">

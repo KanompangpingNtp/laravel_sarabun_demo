@@ -15,6 +15,6 @@ class DocumentPdf extends Model
 
     public function receivedBook()
     {
-        return $this->belongsTo(ReceivedBook::class);
+        return $this->belongsTo(ReceivedBook::class, 'received_book_id');
     }
 }
