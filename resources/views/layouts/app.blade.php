@@ -166,13 +166,24 @@
         <!-- Tab Navigation -->
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                {{-- <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">รับหนังสือ</a> --}}
-                <a class="nav-link" id="home-tab" href="{{ route('getbookIndex') }}" role="tab" aria-controls="home" aria-selected="false">แฟ้มบนโต๊ะ</a>
+                <a class="nav-link {{ Request::routeIs('getbookIndex') ? 'active' : '' }}" 
+                   id="home-tab" 
+                   href="{{ route('getbookIndex') }}" 
+                   role="tab" 
+                   aria-controls="home" 
+                   aria-selected="{{ Request::routeIs('getbookIndex') ? 'true' : 'false' }}">
+                    แฟ้มบนโต๊ะ
+                </a>
             </li>
             <li class="nav-item" role="presentation">
-                {{-- <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab"
-                    aria-controls="profile" aria-selected="false">แฟ้มบนโต๊ะ</a> --}}
-                <a class="nav-link" id="profile-tab" href="{{ route('BookFiles') }}" role="tab" aria-controls="profile" aria-selected="false">แฟ้มบนโต๊ะ</a>
+                <a class="nav-link {{ Request::routeIs('BookFiles') ? 'active' : '' }}" 
+                   id="profile-tab" 
+                   href="{{ route('BookFiles') }}" 
+                   role="tab" 
+                   aria-controls="profile" 
+                   aria-selected="{{ Request::routeIs('BookFiles') ? 'true' : 'false' }}">
+                    แฟ้มบนโต๊ะ
+                </a>
             </li>
             <li class="nav-item" role="presentation">
                 <a class="nav-link" id="tracking-tab" data-bs-toggle="tab" href="#tracking" role="tab" aria-controls="tracking" aria-selected="false">ติดตามหนังสือ</a>
