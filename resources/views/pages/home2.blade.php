@@ -5,6 +5,7 @@
 
 @foreach ($ReceivedBook as $book)
     <div>
+        {{-- ข้อมูลแสดง pdf --}}
         <p>เลขที่รับ: {{ $book->number_receive }}</p>
         <p>หัวข้อ: {{ $book->subject }}</p>
         <p>วันที่รับ:
@@ -14,6 +15,10 @@
                 {{ \Carbon\Carbon::parse($book->received_date)->format('d-m-Y') }}
             @endif
         </p>
+
+        {{-- ข้อมูลในแสดม --}}
+        <p>เลขที่รับ: {{ $book->number_receive }} </p>
+        <p>วันที่ : {{$book->received_date}}</p>
 
         <!-- แสดงไฟล์ PDF -->
         @if ($book->documentPdf)
