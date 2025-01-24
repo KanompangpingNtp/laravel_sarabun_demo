@@ -27,6 +27,6 @@ class ReceivedBook extends Model
 
     public function documentPdf()
     {
-        return $this->hasMany(DocumentPdf::class, 'received_book_id');
+        return $this->hasOne(DocumentPdf::class, 'received_book_id');
     }
 }

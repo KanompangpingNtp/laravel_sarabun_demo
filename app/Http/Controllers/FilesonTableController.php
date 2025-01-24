@@ -9,8 +9,7 @@ use App\Models\ReceivedBookView;
 
 class FilesonTableController extends Controller
 {
-    //
-    public function getbookIndex()
+    public function BookFiles()
     {
         $ReceivedBook = ReceivedBook::with('documentPdf')->get();
 
