@@ -15,4 +15,11 @@ class FilesonTableController extends Controller
 
         return view('pages.home2', compact('ReceivedBook'));
     }
+
+    public function viewFile($id)
+    {
+        $receivedbook = ReceivedBook::with('documentPdf')->findOrFail($id);
+
+        return view('pages.view_file', compact('receivedbook'));
+    }
 }

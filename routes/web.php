@@ -31,6 +31,7 @@ Route::middleware(['checkAgencie1'])->group(function () {
 
     //แฟ้มบนโต๊ะ
     Route::get('/BookFiles/index', [FilesonTableController::class, 'BookFiles'])->name('BookFiles');
+    Route::get('/BookFiles/{id}/view', [FilesonTableController::class, 'viewFile'])->name('viewFile');
 });
 
 Route::middleware(['checkAgencie2'])->group(function () {
