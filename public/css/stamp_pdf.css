@@ -1,0 +1,18 @@
+.clickable-card {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.clickable-card:hover {
+    transform: scale(1.05);
+}
+
+.pdf-editor {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .pdf-editor {
+        display: block;
+    }
+}
