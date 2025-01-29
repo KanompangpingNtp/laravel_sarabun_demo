@@ -43,7 +43,7 @@
 
     <script>
         const pdfUrl = "{{ $pdfPath }}";
-        const stampImageUrl = "{{ asset('stamp_png/book4.png') }}"; // เส้นทางของภาพ PNG ที่จะใช้เป็นแสตมป์
+        const stampImageUrl = "{{ asset('stamp/stamp.png') }}"; // เส้นทางของภาพ PNG ที่จะใช้เป็นแสตมป์
 
         // Loading spinner
         const loadingSpinner = document.getElementById('loading-spinner');
